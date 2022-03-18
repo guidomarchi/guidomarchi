@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosas para hacer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="contenido">
+
+        <div class="contenedor mensaje">
+            <h2>Que tenes que hacer?</h2>
+            
+            <form id="formulario">
+                <textarea id="mensaje" maxlength="20"></textarea>
+                <p><label for="mensaje" id="contador">0</label>/20</p>
+                <input type="submit" value="Agregar" class="enviar" id="enviar">
+            </form>
+        </div>
+        <div class="contenedor lista">
+            <h2>Tengo que hacer:</h2>
+            <div id="resultado"></div>
+        </div>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(to right, rgb(245, 58, 58), rgba(121, 38, 230, 0.867));
+    font-family: 'Staatliches', cursive;
+}
+
+h2{
+    text-align: center;
+}
+
+.contenido{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px;
+
+}
+
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+}
+/*contenedores*/
+.mensaje{
+    max-width: 60%;
+    border-right: 2px solid rgb(6 80 25 / 34%);
+}
+
+.incompleto{
+    border-bottom: 2px solid red;
+}
+
+.lista{
+    max-width: 40%;
+    margin: 15px;
+    line-height: 120%;
+    box-sizing: content-box;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.mensaje label{
+    text-align: center;
+}
+
+#formulario{
+    margin: 15px;
+}
+
+/*textarea*/
+#mensaje{
+    resize: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: large;
+    width: 300px;
+    height: 150px;
+    letter-spacing: 1px;
+}
+
+.enviar{
+    min-width: 150px;
+    margin: 10px auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    border: 0px;
+    border-radius: 5px;
+    color: antiquewhite;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .67);
+}
+
+.error {
+    background-color: red;
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    max-width: 400px;
+    margin: 0 auto;
+    color: white;
+}
+
+.borrar,
+.borrar:hover {
+    float: right;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+#resultado{
+    line-height: 120%;
+    box-sizing: content-box;
+    white-space: nowrap;
+    text-overflow: clip;
+    letter-spacing: 1px;
+    margin: 15px;
+    padding: 15px;
+    position: absolute;
+}

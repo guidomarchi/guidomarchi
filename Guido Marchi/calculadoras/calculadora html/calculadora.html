@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //calculadora
+        let a = 0 , b = 0, resultado = 0;
+
+        function pedirOpcion () {
+            const opcion = parseInt(prompt('ingrese 1 si quiere sumar, ingrese 2 si quiere restar, ingrese 3 si quiere multiplicar, ingrese 4 si quiere dividir,'));
+            if(opcion < 1 || opcion > 4){
+                alert('opcion incorrecta');
+                pedirOpcion();
+            }
+            a = parseFloat(prompt('ingrese el primer numero'));
+            b = parseFloat(prompt('ingrese el segundo numero'));
+            if(opcion == 1){
+                sumar(a,b);
+            }
+            if(opcion == 2){
+                restar(a,b);
+            }
+            if(opcion == 3){
+                multiplicar(a,b);
+            }
+            if(opcion == 4){
+                dividir(a,b);
+            }
+           
+        }
+/*
+        function pedirValores(){
+            a = parseFloat(prompt('ingrese el primer numero'))
+            b = parseFloat(prompt('ingrese el segundo numero'))
+        }
+*/
+        function sumar (a,b){
+            resultado = a + b;
+            alert(`el resultado de la suma es ${resultado}`);
+            pedirOpcion();    
+        }
+
+        function restar (a,b){
+            resultado = a - b;
+            alert(`el resultado de la resta es ${resultado}`);
+            pedirOpcion();    
+        }
+
+        function multiplicar(a,b) {
+            resultado = a * b;
+            alert(`el resultado de la multiplicacion es ${resultado}`);
+            pedirOpcion();  
+        }
+
+        function dividir(a,b) {
+            resultado = a / b;
+            alert(`el resultado de la division es ${resultado}`);
+            pedirOpcion();  
+        }
+        
+        pedirOpcion();
+
+    </script>
+</body>
+</html>
