@@ -1,6 +1,6 @@
 // Variables
 const carrito = document.querySelector('#carrito');
-const listaCursos = document.querySelector('#lista-cursos');
+const listapc = document.querySelector('#lista-pc');
 const contenedorCarrito = document.querySelector('#lista-carrito tbody');
 const vaciarCarritoBtn = document.querySelector('#vaciar-carrito'); 
 let articulosCarrito = [];
@@ -15,13 +15,11 @@ function cargarEventListeners(e) {
         carritoHTML();
     });
 
-    //cuando agrega un curso presionando 'agregar al carrito'
-    listaCursos.addEventListener('click', agregarCurso);
+   
+    listapc.addEventListener('click', agregarPc);
 
-    //elimina cursos del carrito
-    carrito.addEventListener('click', eliminarCurso);
+    carrito.addEventListener('click', eliminarpc);
 
-    //vaciar carrito
     vaciarCarritoBtn.addEventListener('click', () => {
         articulosCarrito = [];
 
@@ -29,61 +27,60 @@ function cargarEventListeners(e) {
     })
 }
 
-function agregarCurso(e){
+function agregarPc(e){
     e.preventDefault();
     console.log(e.target.classList);
     if (e.target.classList.contains('agregar-carrito')) {
-        const curso = e.target.parentElement.parentElement;
-        leerDatos(curso);
+        const pc = e.target.parentElement.parentElement;
+        leerDatos(pc);
     }
 }
 
-function eliminarCurso(e){
-    if (e.target.classList.contains('borrar-curso')) {
-        //obtengo el id del curso que quiero eliminar
-        const cursoId = e.target.getAttribute('data-id');
-        // creo un nuevo array filtrando todo los cursos que tengan un id distinto al que quiero borrar
-        articulosCarrito = articulosCarrito.filter(curso => curso.id !== cursoId);
+function eliminarpc(e){
+    if (e.target.classList.contains('borrar-pc')) {
+        const pcId = e.target.getAttribute('data-id');
+        // creo un nuevo array filtrando todo las pc s que tengan un id distinto al que quiero borrar
+        articulosCarrito = articulosCarrito.filter(pc => pc.id !== pcId);
 
         carritoHTML();
     }
 }
 
 //lee el contenido del card
-function leerDatos(curso){
+function leerDatos(pc){
 
     //guardo el contenido del card en un obj
-    const infoCurso = {
-        imagen: curso.querySelector('img').src,
-        titulo: curso.querySelector('h5').textContent,
-        precio: curso.querySelector('.precio').textContent,
-        id: curso.querySelector('a').getAttribute('data-id'),
+    const infoPc = {
+        imagen: pc.querySelector('img').src,
+        titulo: pc.querySelector('h5').textContent,
+        precio: pc.querySelector('.precio').textContent,
+        id: pc.querySelector('a').getAttribute('data-id'),
         cantidad: 1
     }
 
     //revisa si un elemento existe en el carrito
-    const existe = articulosCarrito.some(curso => curso.id === infoCurso.id );
+    const existe = articulosCarrito.some(pc => pc.id === infoPc.id );
     if(existe){
         //actualiza la cantidad 
         //.map genera un nuevo arreglo
-        const cursos = articulosCarrito.map(curso => {
-            if (curso.id === infoCurso.id) {
-                //si el id del curso analizado(infoCurso.id) es igual al id de otro curso(curso.id)
-                curso.cantidad++;
-                return curso;
-                //agrega el curso qu ya existia con la cantidad modificada al nuevo arreglo
+        const pcs = articulosCarrito.map(pc => {
+            if (pc.id === infoPc.id) {
+                
+                pc.cantidad++;
+                return pc;
+                
             } else {
-                return curso;
-                //agrega el curso como esta
+                return pc;
+                
             }
         });
-        console.log(cursos);
+        console.log(pcs);
         // a articulosCarrito le agrgo el nuevo array
-        articulosCarrito = [...cursos];
+        articulosCarrito = [...pcs];
     } else {
         //agrego el obj a un array 
-        articulosCarrito = [...articulosCarrito, infoCurso];
-        //si no pongo una copia de lo que ya hbia en el carrito se sobrescribe la info
+        articulosCarrito = [...articulosCarrito, infoPc];
+        
     }
     
     carritoHTML();
@@ -95,8 +92,8 @@ function carritoHTML() {
     //limpia el html
     limpiarHTML();
 
-    articulosCarrito.forEach( curso =>{
-        const { imagen, titulo, precio, cantidad, id} = curso;
+    articulosCarrito.forEach( pc =>{
+        const { imagen, titulo, precio, cantidad, id} = pc;
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>
@@ -112,7 +109,7 @@ function carritoHTML() {
                 ${cantidad}
             </td>
             <td>
-                <a href="#" class="borrar-curso" data-id="${id}"> X </a>
+                <a href="#" class="borrar-pc" data-id="${id}"> X </a>
             </td>
         `;
 
@@ -126,7 +123,7 @@ function sincronizarStorage(){
     localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
 }
 
-//elimina los cursos del tbody
+
 function limpiarHTML(){
     //forma lenta
     //contenedorCarrito.textContent = '';
